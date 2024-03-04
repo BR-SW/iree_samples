@@ -2,6 +2,10 @@ riscv64-unknown-linux-gnu-gcc -g -O0 -c module_abs_dispatch_0_embedded_elf_riscv
 riscv64-unknown-linux-gnu-gcc -g -O0 -c main.c
 riscv64-unknown-linux-gnu-gcc -g -O0 main.o lib.o -o main
 
+# clang
+clang --target=riscv64-unknown-linux-gnu --gcc-toolchain=${RISCV_TOOLCHAIN_ROOT} \
+  -O0 -o main main.c module_abs_dispatch_0_embedded_elf_riscv_64.s
+
 qemu-riscv64 \
   -cpu rv64,v=true,vext_spec=v1.0 \
   -L ${RISCV_TOOLCHAIN_ROOT}/sysroot/ \
