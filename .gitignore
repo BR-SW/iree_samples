@@ -1,0 +1,8 @@
+# *
+
+*.spv
+*.spvasm
+
+*.o
+*.so
+main
