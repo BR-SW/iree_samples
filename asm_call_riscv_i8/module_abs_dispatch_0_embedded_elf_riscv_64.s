@@ -1,14 +1,13 @@
 	.text
 	.attribute	4, 16
-	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl256b1p0_zvl32b1p0_zvl512b1p0_zvl64b1p0"
+	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_zicsr2p0"
 	.file	"abs_dispatch_0"
 	.section	.text.abs_dispatch_0_generic,"ax",@progbits
-	.p2align	1
-	.globl	abs_dispatch_0_generic
+	.p2align	2
 	.type	abs_dispatch_0_generic,@function
 abs_dispatch_0_generic:
 .Lfunc_begin0:
-	.file	1 "abs_dumps" "configured_module_abs_dispatch_0.mlir"
+	.file	1 "obj_dumps" "configured_module_abs_dispatch_0.mlir"
 	.loc	1 1 0
 	.cfi_startproc
 	addi	sp, sp, -16
@@ -37,10 +36,9 @@ abs_dispatch_0_generic:
 	sb	a1, 0(a0)
 	.loc	1 21 8
 	li	a0, 0
-	.loc	1 21 8 epilogue_begin is_stmt 0
-	addi	sp, s0, -16
 	ld	ra, 8(sp)
 	ld	s0, 0(sp)
+	.loc	1 21 8 epilogue_begin is_stmt 0
 	addi	sp, sp, 16
 	ret
 .Ltmp1:
@@ -50,7 +48,7 @@ abs_dispatch_0_generic:
 
 	.section	.text.iree_hal_executable_library_query,"ax",@progbits
 	.globl	iree_hal_executable_library_query
-	.p2align	1
+	.p2align	2
 	.type	iree_hal_executable_library_query,@function
 iree_hal_executable_library_query:
 .Liree_hal_executable_library_query$local:
@@ -72,7 +70,7 @@ iree_hal_executable_library_query:
 	.cfi_endproc
 
 	.section	.text.iree_h2f_ieee,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	iree_h2f_ieee,@function
 iree_h2f_ieee:
 .Lfunc_begin2:
@@ -99,11 +97,11 @@ iree_h2f_ieee:
 	fmul.s	fa0, fa5, fa4
 	ret
 .LBB2_5:
-	add	a1, a1, a2
-	lui	a2, 28
-	add	a1, a1, a2
+	add	a1, a2, a1
 	slli	a1, a1, 13
-	or	a0, a0, a1
+	lui	a2, 229376
+	add	a0, a0, a2
+	add	a0, a1, a0
 	fmv.w.x	fa0, a0
 	ret
 .LBB2_6:
@@ -116,107 +114,103 @@ iree_h2f_ieee:
 	.cfi_endproc
 
 	.section	.text.iree_f2h_ieee,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	iree_f2h_ieee,@function
 iree_f2h_ieee:
 .Lfunc_begin3:
 	.cfi_startproc
 	fmv.x.w	a4, fa0
-	srliw	a6, a4, 31
+	srliw	a0, a4, 31
 	slli	a1, a4, 41
 	srli	a1, a1, 41
 	slli	a3, a4, 33
 	srli	a3, a3, 56
 	addi	a5, a3, -113
-	li	a0, 28
+	li	a6, 28
 	addi	a2, a3, -112
-	bltu	a0, a5, .LBB3_3
-	slli	a6, a6, 15
+	bltu	a6, a5, .LBB3_4
+	slli	a0, a0, 15
 	slli	a2, a2, 10
-	lui	a0, 1
-	add	a0, a0, a1
-	srli	a0, a0, 13
-	or	a0, a0, a6
+	lui	a3, 1
+	add	a1, a1, a3
 .LBB3_2:
+	srli	a1, a1, 13
+	or	a0, a1, a0
+.LBB3_3:
 	or	a0, a0, a2
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB3_3:
-	beqz	a4, .LBB3_6
-	li	a0, 112
-	bltu	a0, a3, .LBB3_7
-	li	a0, 102
-	bgeu	a3, a0, .LBB3_10
-.LBB3_6:
+.LBB3_4:
+	beqz	a4, .LBB3_7
+	li	a5, 112
+	bltu	a5, a3, .LBB3_8
+	li	a2, 102
+	bgeu	a3, a2, .LBB3_11
+.LBB3_7:
 	slli	a0, zero, 48
 	srai	a0, a0, 48
 	ret
-.LBB3_7:
-	li	a0, 143
-	bne	a2, a0, .LBB3_11
+.LBB3_8:
+	li	a5, 143
+	bne	a2, a5, .LBB3_12
 	li	a2, 31
 	slli	a2, a2, 10
-	slli	a0, a6, 15
-	beqz	a1, .LBB3_2
+	slli	a0, a0, 15
+	beqz	a1, .LBB3_3
 	srli	a1, a1, 13
 	or	a0, a0, a2
 	or	a0, a0, a1
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB3_10:
-	lui	a0, 2048
-	or	a0, a0, a1
-	li	a1, 113
-	subw	a1, a1, a3
-	srlw	a0, a0, a1
-	slli	a1, a0, 1
-	lui	a2, 2
-	and	a1, a1, a2
-	add	a0, a0, a1
-	slli	a6, a6, 15
-	srliw	a0, a0, 13
-	or	a0, a0, a6
+.LBB3_11:
+	lui	a2, 2048
+	or	a1, a1, a2
+	li	a2, 113
+	subw	a2, a2, a3
+	srlw	a1, a1, a2
+	slli	a2, a1, 1
+	lui	a3, 2
+	and	a2, a2, a3
+	add	a1, a2, a1
+	slli	a0, a0, 15
+	srliw	a1, a1, 13
+	or	a0, a1, a0
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB3_11:
+.LBB3_12:
 	slli	a4, a4, 51
-	bgez	a4, .LBB3_15
+	bgez	a4, .LBB3_16
 	lui	a4, 2
-	add	a4, a4, a1
-	srli	a0, a1, 13
-	sltiu	a1, a0, 1023
-	li	a5, 1023
+	add	a4, a1, a4
+	srli	a5, a1, 13
+	sltiu	a1, a5, 1023
+	li	a6, 1023
 	neg	a1, a1
-	bltu	a0, a5, .LBB3_14
+	bltu	a5, a6, .LBB3_15
 	addi	a2, a3, -111
-.LBB3_14:
-	and	a1, a1, a4
 .LBB3_15:
+	and	a1, a1, a4
+.LBB3_16:
 	li	a3, 31
-	slli	a0, a6, 15
-	bltu	a2, a3, .LBB3_17
+	slli	a0, a0, 15
+	bltu	a2, a3, .LBB3_18
 	slli	a3, a3, 10
 	or	a0, a0, a3
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB3_17:
+.LBB3_18:
 	slli	a2, a2, 10
-	srli	a1, a1, 13
-	or	a0, a0, a1
-	or	a0, a0, a2
-	slli	a0, a0, 48
-	srai	a0, a0, 48
-	ret
+	j	.LBB3_2
 .Lfunc_end3:
 	.size	iree_f2h_ieee, .Lfunc_end3-iree_f2h_ieee
 	.cfi_endproc
 
 	.section	.text.__gnu_h2f_ieee,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__gnu_h2f_ieee,@function
 __gnu_h2f_ieee:
 .Lfunc_begin4:
@@ -243,11 +237,11 @@ __gnu_h2f_ieee:
 	fmul.s	fa0, fa5, fa4
 	ret
 .LBB4_5:
-	add	a1, a1, a2
-	lui	a2, 28
-	add	a1, a1, a2
+	add	a1, a2, a1
 	slli	a1, a1, 13
-	or	a0, a0, a1
+	lui	a2, 229376
+	add	a0, a0, a2
+	add	a0, a1, a0
 	fmv.w.x	fa0, a0
 	ret
 .LBB4_6:
@@ -260,7 +254,7 @@ __gnu_h2f_ieee:
 	.cfi_endproc
 
 	.section	.text.__extendhfsf2,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__extendhfsf2,@function
 __extendhfsf2:
 .Lfunc_begin5:
@@ -290,10 +284,10 @@ __extendhfsf2:
 .LBB5_5:
 	slli	a1, a1, 49
 	srli	a1, a1, 49
-	lui	a2, 28
-	add	a1, a1, a2
 	slli	a1, a1, 13
-	or	a0, a0, a1
+	lui	a2, 229376
+	add	a0, a0, a2
+	add	a0, a1, a0
 	fmv.w.x	fa0, a0
 	ret
 .LBB5_6:
@@ -306,201 +300,196 @@ __extendhfsf2:
 	.cfi_endproc
 
 	.section	.text.__gnu_f2h_ieee,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__gnu_f2h_ieee,@function
 __gnu_f2h_ieee:
 .Lfunc_begin6:
 	.cfi_startproc
 	fmv.x.w	a4, fa0
-	srliw	a6, a4, 31
+	srliw	a0, a4, 31
 	slli	a1, a4, 41
 	srli	a1, a1, 41
 	slli	a3, a4, 33
 	srli	a3, a3, 56
 	addi	a5, a3, -113
-	li	a0, 28
+	li	a6, 28
 	addi	a2, a3, -112
-	bltu	a0, a5, .LBB6_3
-	slli	a6, a6, 15
+	bltu	a6, a5, .LBB6_4
+	slli	a0, a0, 15
 	slli	a2, a2, 10
-	lui	a0, 1
-	add	a0, a0, a1
-	srli	a0, a0, 13
-	or	a0, a0, a6
+	lui	a3, 1
+	add	a1, a1, a3
 .LBB6_2:
+	srli	a1, a1, 13
+	or	a0, a1, a0
+.LBB6_3:
 	or	a0, a0, a2
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB6_3:
-	beqz	a4, .LBB6_6
-	li	a0, 112
-	bltu	a0, a3, .LBB6_7
-	li	a0, 102
-	bgeu	a3, a0, .LBB6_10
-.LBB6_6:
+.LBB6_4:
+	beqz	a4, .LBB6_7
+	li	a5, 112
+	bltu	a5, a3, .LBB6_8
+	li	a2, 102
+	bgeu	a3, a2, .LBB6_11
+.LBB6_7:
 	slli	a0, zero, 48
 	srai	a0, a0, 48
 	ret
-.LBB6_7:
-	li	a0, 143
-	bne	a2, a0, .LBB6_11
+.LBB6_8:
+	li	a5, 143
+	bne	a2, a5, .LBB6_12
 	li	a2, 31
 	slli	a2, a2, 10
-	slli	a0, a6, 15
-	beqz	a1, .LBB6_2
+	slli	a0, a0, 15
+	beqz	a1, .LBB6_3
 	srli	a1, a1, 13
 	or	a0, a0, a2
 	or	a0, a0, a1
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB6_10:
-	lui	a0, 2048
-	or	a0, a0, a1
-	li	a1, 113
-	subw	a1, a1, a3
-	srlw	a0, a0, a1
-	slli	a1, a0, 1
-	lui	a2, 2
-	and	a1, a1, a2
-	add	a0, a0, a1
-	slli	a6, a6, 15
-	srliw	a0, a0, 13
-	or	a0, a0, a6
+.LBB6_11:
+	lui	a2, 2048
+	or	a1, a1, a2
+	li	a2, 113
+	subw	a2, a2, a3
+	srlw	a1, a1, a2
+	slli	a2, a1, 1
+	lui	a3, 2
+	and	a2, a2, a3
+	add	a1, a2, a1
+	slli	a0, a0, 15
+	srliw	a1, a1, 13
+	or	a0, a1, a0
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB6_11:
+.LBB6_12:
 	slli	a4, a4, 51
-	bgez	a4, .LBB6_15
+	bgez	a4, .LBB6_16
 	lui	a4, 2
-	add	a4, a4, a1
-	srli	a0, a1, 13
-	sltiu	a1, a0, 1023
-	li	a5, 1023
+	add	a4, a1, a4
+	srli	a5, a1, 13
+	sltiu	a1, a5, 1023
+	li	a6, 1023
 	neg	a1, a1
-	bltu	a0, a5, .LBB6_14
+	bltu	a5, a6, .LBB6_15
 	addi	a2, a3, -111
-.LBB6_14:
-	and	a1, a1, a4
 .LBB6_15:
+	and	a1, a1, a4
+.LBB6_16:
 	li	a3, 31
-	slli	a0, a6, 15
-	bltu	a2, a3, .LBB6_17
+	slli	a0, a0, 15
+	bltu	a2, a3, .LBB6_18
 	slli	a3, a3, 10
 	or	a0, a0, a3
 	slli	a0, a0, 48
 	srai	a0, a0, 48
 	ret
-.LBB6_17:
+.LBB6_18:
 	slli	a2, a2, 10
-	srli	a1, a1, 13
-	or	a0, a0, a1
-	or	a0, a0, a2
-	slli	a0, a0, 48
-	srai	a0, a0, 48
-	ret
+	j	.LBB6_2
 .Lfunc_end6:
 	.size	__gnu_f2h_ieee, .Lfunc_end6-__gnu_f2h_ieee
 	.cfi_endproc
 
 	.section	.text.__truncsfhf2,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__truncsfhf2,@function
 __truncsfhf2:
 .Lfunc_begin7:
 	.cfi_startproc
 	fmv.x.w	a4, fa0
-	srliw	a6, a4, 31
+	srliw	a0, a4, 31
 	slli	a1, a4, 41
 	srli	a1, a1, 41
 	slli	a3, a4, 33
 	srli	a3, a3, 56
 	addi	a5, a3, -113
-	li	a0, 28
+	li	a6, 28
 	addi	a2, a3, -112
-	bltu	a0, a5, .LBB7_3
-	slli	a6, a6, 15
+	bltu	a6, a5, .LBB7_4
+	slli	a0, a0, 15
 	slli	a2, a2, 10
-	lui	a0, 1
-	add	a0, a0, a1
-	srli	a0, a0, 13
-	or	a0, a0, a6
+	lui	a3, 1
+	add	a1, a1, a3
 .LBB7_2:
-	or	a0, a0, a2
-	j	.LBB7_17
+	srli	a1, a1, 13
+	or	a0, a1, a0
 .LBB7_3:
-	beqz	a4, .LBB7_6
-	li	a0, 112
-	bltu	a0, a3, .LBB7_7
-	li	a0, 102
-	bgeu	a3, a0, .LBB7_10
-.LBB7_6:
-	li	a0, 0
-	j	.LBB7_17
+	or	a0, a0, a2
+	j	.LBB7_18
+.LBB7_4:
+	beqz	a4, .LBB7_7
+	li	a5, 112
+	bltu	a5, a3, .LBB7_8
+	li	a2, 102
+	bgeu	a3, a2, .LBB7_11
 .LBB7_7:
-	li	a0, 143
-	bne	a2, a0, .LBB7_11
+	li	a0, 0
+	j	.LBB7_18
+.LBB7_8:
+	li	a5, 143
+	bne	a2, a5, .LBB7_12
 	li	a2, 31
 	slli	a2, a2, 10
-	slli	a0, a6, 15
-	beqz	a1, .LBB7_2
+	slli	a0, a0, 15
+	beqz	a1, .LBB7_3
 	srli	a1, a1, 13
 	or	a0, a0, a2
 	or	a0, a0, a1
-	j	.LBB7_17
-.LBB7_10:
-	lui	a0, 2048
-	or	a0, a0, a1
-	li	a1, 113
-	subw	a1, a1, a3
-	srlw	a0, a0, a1
-	slli	a1, a0, 1
-	lui	a2, 2
-	and	a1, a1, a2
-	add	a0, a0, a1
-	slli	a6, a6, 15
-	srliw	a0, a0, 13
-	or	a0, a0, a6
-	j	.LBB7_17
+	j	.LBB7_18
 .LBB7_11:
+	lui	a2, 2048
+	or	a1, a1, a2
+	li	a2, 113
+	subw	a2, a2, a3
+	srlw	a1, a1, a2
+	slli	a2, a1, 1
+	lui	a3, 2
+	and	a2, a2, a3
+	add	a1, a2, a1
+	slli	a0, a0, 15
+	srliw	a1, a1, 13
+	or	a0, a1, a0
+	j	.LBB7_18
+.LBB7_12:
 	slli	a4, a4, 51
-	bgez	a4, .LBB7_15
+	bgez	a4, .LBB7_16
 	lui	a4, 2
-	add	a4, a4, a1
-	srli	a0, a1, 13
-	sltiu	a1, a0, 1023
-	li	a5, 1023
+	add	a4, a1, a4
+	srli	a5, a1, 13
+	sltiu	a1, a5, 1023
+	li	a6, 1023
 	neg	a1, a1
-	bltu	a0, a5, .LBB7_14
+	bltu	a5, a6, .LBB7_15
 	addi	a2, a3, -111
-.LBB7_14:
-	and	a1, a1, a4
 .LBB7_15:
+	and	a1, a1, a4
+.LBB7_16:
 	li	a3, 31
-	slli	a0, a6, 15
-	bltu	a2, a3, .LBB7_18
+	slli	a0, a0, 15
+	bltu	a2, a3, .LBB7_19
 	slli	a3, a3, 10
 	or	a0, a0, a3
-.LBB7_17:
+.LBB7_18:
 	addi	sp, sp, -16
 	.cfi_def_cfa_offset 16
 	sh	a0, 12(sp)
 	flw	fa0, 12(sp)
 	addi	sp, sp, 16
 	ret
-.LBB7_18:
+.LBB7_19:
 	slli	a2, a2, 10
-	srli	a1, a1, 13
-	or	a0, a0, a1
 	j	.LBB7_2
 .Lfunc_end7:
 	.size	__truncsfhf2, .Lfunc_end7-__truncsfhf2
 	.cfi_endproc
 
 	.section	.text.ceilf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	ceilf,@function
 ceilf:
 .Lfunc_begin8:
@@ -528,8 +517,8 @@ ceilf:
 	lui	a4, 1046528
 	sraw	a1, a4, a1
 	addi	a3, a3, -1
-	and	a2, a2, a3
-	add	a0, a0, a2
+	and	a2, a3, a2
+	add	a0, a2, a0
 	and	a0, a0, a1
 	j	.LBB8_8
 .LBB8_4:
@@ -573,7 +562,7 @@ ceilf:
 .LCPI9_8:
 	.quad	0x3ff0000000000000
 	.section	.text.expf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	expf,@function
 expf:
 .Lfunc_begin9:
@@ -606,7 +595,7 @@ expf:
 .Lpcrel_hi6:
 	auipc	a2, %pcrel_hi(__exp2f_data)
 	addi	a2, a2, %pcrel_lo(.Lpcrel_hi6)
-	add	a1, a1, a2
+	add	a1, a2, a1
 	ld	a1, 0(a1)
 .Lpcrel_hi7:
 	auipc	a2, %pcrel_hi(.LCPI9_5)
@@ -615,7 +604,7 @@ expf:
 	auipc	a2, %pcrel_hi(.LCPI9_6)
 	fld	fa3, %pcrel_lo(.Lpcrel_hi8)(a2)
 	slli	a0, a0, 47
-	add	a0, a0, a1
+	add	a0, a1, a0
 	fmul.d	fa4, fa5, fa4
 	fadd.d	fa4, fa4, fa3
 .Lpcrel_hi9:
@@ -677,7 +666,7 @@ expf:
 	.cfi_endproc
 
 	.section	.text.__math_oflowf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__math_oflowf,@function
 __math_oflowf:
 .Lfunc_begin10:
@@ -702,7 +691,7 @@ __math_oflowf:
 	.cfi_endproc
 
 	.section	.text.__math_uflowf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__math_uflowf,@function
 __math_uflowf:
 .Lfunc_begin11:
@@ -727,7 +716,7 @@ __math_uflowf:
 	.cfi_endproc
 
 	.section	.text.__math_xflowf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__math_xflowf,@function
 __math_xflowf:
 .Lfunc_begin12:
@@ -749,7 +738,7 @@ __math_xflowf:
 	.cfi_endproc
 
 	.section	.text.feclearexcept,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	feclearexcept,@function
 feclearexcept:
 .Lfunc_begin13:
@@ -761,7 +750,7 @@ feclearexcept:
 	.cfi_endproc
 
 	.section	.text.feraiseexcept,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	feraiseexcept,@function
 feraiseexcept:
 .Lfunc_begin14:
@@ -773,7 +762,7 @@ feraiseexcept:
 	.cfi_endproc
 
 	.section	.text.fetestexcept,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fetestexcept,@function
 fetestexcept:
 .Lfunc_begin15:
@@ -785,7 +774,7 @@ fetestexcept:
 	.cfi_endproc
 
 	.section	.text.fegetround,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fegetround,@function
 fegetround:
 .Lfunc_begin16:
@@ -797,7 +786,7 @@ fegetround:
 	.cfi_endproc
 
 	.section	.text.__fesetround,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__fesetround,@function
 __fesetround:
 .Lfunc_begin17:
@@ -809,7 +798,7 @@ __fesetround:
 	.cfi_endproc
 
 	.section	.text.fegetenv,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fegetenv,@function
 fegetenv:
 .Lfunc_begin18:
@@ -821,7 +810,7 @@ fegetenv:
 	.cfi_endproc
 
 	.section	.text.fesetenv,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fesetenv,@function
 fesetenv:
 .Lfunc_begin19:
@@ -833,7 +822,7 @@ fesetenv:
 	.cfi_endproc
 
 	.section	.text.floorf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	floorf,@function
 floorf:
 .Lfunc_begin20:
@@ -860,8 +849,8 @@ floorf:
 	lui	a3, 1046528
 	sraw	a1, a3, a1
 	srli	a3, a0, 31
-	and	a2, a2, a3
-	add	a0, a0, a2
+	and	a2, a3, a2
+	add	a0, a2, a0
 	and	a0, a0, a1
 	j	.LBB20_8
 .LBB20_4:
@@ -886,7 +875,7 @@ floorf:
 	.cfi_endproc
 
 	.section	.text.fmaf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fmaf,@function
 fmaf:
 .Lfunc_begin21:
@@ -928,10 +917,10 @@ fmaf:
 .LBB21_8:
 	fmv.d.x	fa4, zero
 	flt.d	a2, fa5, fa4
-	xor	a1, a1, a2
+	xor	a1, a2, a1
 	neg	a1, a1
 	ori	a1, a1, 1
-	add	a0, a0, a1
+	add	a0, a1, a0
 	fmv.d.x	fa5, a0
 	fcvt.s.d	fa0, fa5
 	ret
@@ -940,7 +929,7 @@ fmaf:
 	.cfi_endproc
 
 	.section	.text.fmodf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	fmodf,@function
 fmodf:
 .Lfunc_begin22:
@@ -952,24 +941,24 @@ fmodf:
 	srli	a0, a3, 33
 	lui	a1, 522240
 	bltu	a1, a0, .LBB22_8
-	fmv.x.w	a6, fa0
-	slli	a1, a6, 33
+	fmv.x.w	a0, fa0
+	slli	a1, a0, 33
 	srli	a1, a1, 56
 	li	a5, 255
 	beq	a1, a5, .LBB22_8
-	slliw	a5, a6, 1
+	slliw	a5, a0, 1
 	bgeu	a2, a5, .LBB22_9
 	srli	a3, a3, 56
 	lui	a2, 2048
 	addi	a5, a2, -1
 	beqz	a1, .LBB22_11
-	and	a0, a6, a5
-	or	a2, a2, a0
+	and	a6, a0, a5
+	or	a2, a6, a2
 	beqz	a3, .LBB22_14
 .LBB22_6:
 	and	a4, a4, a5
-	lui	a0, 2048
-	or	a4, a4, a0
+	lui	a5, 2048
+	or	a4, a4, a5
 	blt	a3, a1, .LBB22_18
 .LBB22_7:
 	subw	a3, a2, a4
@@ -984,7 +973,7 @@ fmodf:
 	ret
 .LBB22_11:
 	li	a1, 0
-	slliw	a2, a6, 9
+	slliw	a2, a0, 9
 	bltz	a2, .LBB22_13
 .LBB22_12:
 	slliw	a2, a2, 1
@@ -993,7 +982,7 @@ fmodf:
 .LBB22_13:
 	li	a2, 1
 	subw	a2, a2, a1
-	sllw	a2, a6, a2
+	sllw	a2, a0, a2
 	bnez	a3, .LBB22_6
 .LBB22_14:
 	li	a3, 0
@@ -1004,9 +993,9 @@ fmodf:
 	addiw	a3, a3, -1
 	bgez	a5, .LBB22_15
 .LBB22_16:
-	li	a0, 1
-	subw	a0, a0, a3
-	sllw	a4, a4, a0
+	li	a5, 1
+	subw	a5, a5, a3
+	sllw	a4, a4, a5
 	blt	a3, a1, .LBB22_18
 	j	.LBB22_7
 .LBB22_17:
@@ -1027,23 +1016,23 @@ fmodf:
 	mv	a2, a3
 	beqz	a3, .LBB22_26
 .LBB22_22:
-	srliw	a0, a2, 23
+	srliw	a4, a2, 23
 	lui	a3, 524288
-	bnez	a0, .LBB22_27
+	bnez	a4, .LBB22_27
 .LBB22_23:
 	slli	a4, a2, 1
-	srliw	a0, a2, 22
+	srliw	a5, a2, 22
 	addiw	a1, a1, -1
 	mv	a2, a4
-	beqz	a0, .LBB22_23
-	and	a0, a6, a3
+	beqz	a5, .LBB22_23
+	and	a0, a0, a3
 	blez	a1, .LBB22_28
 .LBB22_25:
 	lui	a2, 1046528
-	add	a2, a2, a4
+	add	a2, a4, a2
 	slli	a1, a1, 23
-	or	a1, a1, a2
-	or	a0, a0, a1
+	or	a1, a2, a1
+	or	a0, a1, a0
 	fmv.w.x	fa0, a0
 	ret
 .LBB22_26:
@@ -1052,13 +1041,13 @@ fmodf:
 	ret
 .LBB22_27:
 	mv	a4, a2
-	and	a0, a6, a3
+	and	a0, a0, a3
 	bgtz	a1, .LBB22_25
 .LBB22_28:
 	li	a2, 1
 	subw	a2, a2, a1
 	srlw	a1, a4, a2
-	or	a0, a0, a1
+	or	a0, a1, a0
 	fmv.w.x	fa0, a0
 	ret
 .Lfunc_end22:
@@ -1066,7 +1055,7 @@ fmodf:
 	.cfi_endproc
 
 	.section	.text.__math_invalidf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	__math_invalidf,@function
 __math_invalidf:
 .Lfunc_begin23:
@@ -1109,7 +1098,7 @@ __math_invalidf:
 .LCPI24_13:
 	.quad	0x3ff0000000000000
 	.section	.text.powf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	powf,@function
 powf:
 .Lfunc_begin24:
@@ -1119,7 +1108,7 @@ powf:
 	fmv.x.w	a1, fa0
 	fmv.x.w	a0, fa1
 	lui	a2, 526336
-	add	a2, a2, a1
+	add	a2, a1, a2
 	srliw	a3, a2, 24
 	li	a4, 129
 	slliw	a2, a0, 1
@@ -1130,9 +1119,9 @@ powf:
 	li	a0, 0
 .LBB24_3:
 	lui	a2, 789712
-	add	a2, a2, a1
+	add	a2, a1, a2
 	lui	a3, 1046528
-	and	a3, a3, a2
+	and	a3, a2, a3
 	subw	a1, a1, a3
 	sraiw	a3, a2, 23
 	srli	a2, a2, 15
@@ -1140,7 +1129,7 @@ powf:
 .Lpcrel_hi11:
 	auipc	a4, %pcrel_hi(__powf_log2_data)
 	addi	a4, a4, %pcrel_lo(.Lpcrel_hi11)
-	add	a2, a2, a4
+	add	a2, a4, a2
 	fld	fa5, 0(a2)
 	fld	fa4, 8(a2)
 .Lpcrel_hi12:
@@ -1205,9 +1194,9 @@ powf:
 .Lpcrel_hi22:
 	auipc	a3, %pcrel_hi(__exp2f_data)
 	addi	a3, a3, %pcrel_lo(.Lpcrel_hi22)
-	add	a2, a2, a3
+	add	a2, a3, a2
 	ld	a2, 0(a2)
-	add	a0, a0, a1
+	add	a0, a1, a0
 .Lpcrel_hi23:
 	auipc	a1, %pcrel_hi(.LCPI24_10)
 	fld	fa4, %pcrel_lo(.Lpcrel_hi23)(a1)
@@ -1215,7 +1204,7 @@ powf:
 	auipc	a1, %pcrel_hi(.LCPI24_11)
 	fld	fa3, %pcrel_lo(.Lpcrel_hi24)(a1)
 	slli	a0, a0, 47
-	add	a0, a0, a2
+	add	a0, a2, a0
 	fmul.d	fa4, fa5, fa4
 	fadd.d	fa4, fa4, fa3
 .Lpcrel_hi25:
@@ -1363,7 +1352,7 @@ powf:
 	snez	a2, a2
 	and	a1, a1, a0
 	seqz	a1, a1
-	or	a1, a1, a2
+	or	a1, a2, a1
 	bnez	a1, .LBB24_36
 	fneg.s	fa5, fa5
 .LBB24_36:
@@ -1402,7 +1391,7 @@ powf:
 	.cfi_endproc
 
 	.section	.text.roundf,"ax",@progbits
-	.p2align	1
+	.p2align	2
 	.type	roundf,@function
 roundf:
 .Lfunc_begin25:
@@ -1522,7 +1511,7 @@ iree_hal_executable_library_query_v0_tags:
 	.type	__unnamed_4,@object
 	.section	.rodata.__unnamed_4,"a",@progbits
 __unnamed_4:
-	.asciz	"abs_dumps/configured_module_abs_dispatch_0.mlir"
+	.asciz	"obj_dumps/configured_module_abs_dispatch_0.mlir"
 	.size	__unnamed_4, 48
 
 	.type	iree_hal_executable_library_query_v0_src_locs,@object
@@ -1737,7 +1726,7 @@ __exp2f_data:
 .Linfo_string1:
 	.asciz	"configured_module_abs_dispatch_0.mlir"
 .Linfo_string2:
-	.asciz	"abs_dumps"
+	.asciz	"obj_dumps"
 .Linfo_string3:
 	.asciz	"abs_dispatch_0_generic"
 .Linfo_string4:
