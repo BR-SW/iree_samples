@@ -1606,7 +1606,7 @@ main_dispatch_143_matmul_1x1001x1280_i8xi8xi32(NULL, (void*)&dispatch_state, NUL
 
 // number 126 of stream.cmd.execute ops
 
-print_tensor("arg3", arg3, arg3_size);
+//print_tensor("arg3", arg3, arg3_size);
 
 
 
