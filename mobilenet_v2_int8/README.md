@@ -1,3 +1,7 @@
+# Model
+
+https://storage.googleapis.com/iree-model-artifacts/mobilenet_v2_1.0_224_quantized.tflite, the model quantified by TFLite has only two data types, INT8 and INT32.
+
 # Generate main.c and \*.s
 
 Follow at https://github.com/BR-SW/iree-internal/blob/develop_hardware/experimental/codegen/MobileNetV2_int8/README.md to compile model and generate main.c and \*.s.
