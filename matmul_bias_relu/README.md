@@ -1,6 +1,7 @@
 # REF
 
 binaries 和 data 是sample的bin 和 inputs, inputs的传递顺序是：(input.npy, weight.npy, bias.npy, relu_zp.npy)
+input.npy和weight.npy的dtype是int8，bias.npy和relu_zp.npy的dtype是int32，最终输出是int32.
 
 运算结果应为：
 ```
