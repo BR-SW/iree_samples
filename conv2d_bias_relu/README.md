@@ -6,6 +6,7 @@ The quantified parameters are placed in export/000001_conv__conv_Conv/ :
 - qweight.npy : weight, int8
 - qbias.npy: bias, int32
 - out_scale.npy: scale, uint16
+- out_shift.npy: shift, int8
 - zo.npy: zero point, int8
 - qmin.npy: clip, int8
 
