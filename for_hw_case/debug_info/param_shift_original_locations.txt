@@ -1,0 +1,50 @@
+{
+    "000SHIFT_OC0": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC1": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC2": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC3": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC4": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC5": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC6": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC7": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC8": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC9": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC10": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC11": {
+        "HEX": "0F",
+        "DEC": "15"
+    }
+}

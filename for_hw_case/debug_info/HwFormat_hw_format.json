@@ -1,0 +1,354 @@
+{
+    "args": {
+        "func": null,
+        "workflow": [
+            "hw_format"
+        ],
+        "code_path": "/home/roger.luo/workspace/code/testfm/iree-internal",
+        "multi_case": true,
+        "max_process": 10,
+        "case_path": "/home/roger.luo/workspace/code/testfm/iree-internal/../case",
+        "case_name": null,
+        "test_output_path": "/home/roger.luo/workspace/code/testfm/iree-internal/../result",
+        "config": "host.yaml",
+        "module": "graph_compiler",
+        "debug": false,
+        "loglevel": "info"
+    },
+    "docker_config": {},
+    "docker_obj": null,
+    "host": {
+        "username": "roger.luo",
+        "uid": 1001,
+        "gid": 1001,
+        "python": "/opt/conda/envs/testing/bin/python",
+        "groupname": "roger.luo",
+        "home": "/home/roger.luo/workspace/code/testfm",
+        "env_vars": [
+            "include_build_gencase=false",
+            "HOSTNAME=modelzoo-t",
+            "HOSTALIASES=/home/roger.luo/.hosts",
+            "PWD=/home/roger.luo/workspace/code/testfm/modelzoo-testing",
+            "CONDA_PREFIX=/opt/conda/envs/testing",
+            "MAMBA_ROOT_PREFIX=/opt/conda",
+            "HOME=/home/roger.luo",
+            "LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+            "include_hw_format=true",
+            "CONDA_PROMPT_MODIFIER=(testing) ",
+            "CODE_PATH=/home/roger.luo/workspace/code/testfm/iree-internal",
+            "BIN_FOLDER=/opt/micromamba",
+            "WORKSPACE=/home/roger.luo/workspace/code/testfm",
+            "include_build_base=false",
+            "MAMBA_EXE=/opt/micromamba/micromamba",
+            "TERM=xterm",
+            "FRAMEWORK=testing",
+            "CONDA_SHLVL=1",
+            "SHLVL=2",
+            "CONFIG_YAML=host.yaml",
+            "CONDA_DEFAULT_ENV=testing",
+            "include_build_docker=false",
+            "PATH=/opt/conda/envs/testing/bin:/opt/conda/condabin:/opt/micromamba:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "include_build_riscv=false",
+            "PREFIX_LOCATION=/opt/conda",
+            "DEBIAN_FRONTEND=noninteractive",
+            "LOGLEVEL=info",
+            "_=/opt/conda/envs/testing/bin/python",
+            "LC_CTYPE=C.UTF-8"
+        ]
+    },
+    "identification": "hw_format",
+    "default_config": {
+        "test_config": {
+            "model_path": "../model",
+            "test_output_path": "../result",
+            "case_path": "../case",
+            "volumes": [
+                "/var/run/docker.sock:/var/run/docker.sock"
+            ]
+        },
+        "containers": [
+            [
+                {
+                    "identification": "build_base",
+                    "image": "test-llvm",
+                    "output_path": "../iree-build-base",
+                    "build_type": "base",
+                    "timeout": 3600,
+                    "set_cmake_flags": [
+                        "-B ../iree-build-base",
+                        "-DCMAKE_INSTALL_PREFIX=../iree-build-base/install",
+                        "--preset iree_llvm"
+                    ],
+                    "set_cmake_build": "cmake --build ../iree-build-base --target install",
+                    "cmake": "cmake",
+                    "conda_env": "pyenv"
+                },
+                {
+                    "identification": "build_riscv",
+                    "image": "riscv_toolchain",
+                    "output_path": "../iree-build-riscv",
+                    "build_type": "riscv",
+                    "timeout": 3600,
+                    "set_cmake_flags": [
+                        "-DIREE_HOST_BIN_DIR=../iree-build-base/install",
+                        "--preset iree_llvm_riscv"
+                    ],
+                    "set_cmake_build": "cmake --build ../iree-build-riscv",
+                    "environment": [
+                        "RISCV_TOOLCHAIN_ROOT=/usr/src/toolchain_iree"
+                    ],
+                    "image_tag": "64g",
+                    "cmake": "cmake"
+                },
+                {
+                    "identification": "build_mlir",
+                    "image": "iree_riscv",
+                    "command": [
+                        "build_tools/llvm/byo_llvm.sh build_llvm",
+                        "build_tools/llvm/byo_llvm.sh build_mlir"
+                    ]
+                },
+                {
+                    "identification": "build_byollvm",
+                    "image": "gcr.io/iree-oss/base",
+                    "timeout": 3600,
+                    "command": [
+                        "build_tools/cmake/build_and_test_byo_llvm.sh"
+                    ]
+                },
+                {
+                    "identification": "build_asan",
+                    "image": "gcr.io/iree-oss/base-bleeding-edge",
+                    "timeout": 3600,
+                    "command": [
+                        "build_tools/cmake/build_and_test_asan.sh"
+                    ]
+                },
+                {
+                    "identification": "build_tsan",
+                    "image": "gcr.io/iree-oss/base",
+                    "timeout": 3600,
+                    "environment": [
+                        "IREE_TSAN_BUILD_DIR=../build-tsan"
+                    ],
+                    "command": [
+                        "build_tools/cmake/build_and_test_tsan.sh"
+                    ]
+                },
+                {
+                    "identification": "build_docker",
+                    "image": "modelzoo-t",
+                    "timeout": 3600,
+                    "command": [
+                        "docker build -t test-llvm -f experimental/ocl/Dockerfile --build-arg LLVM_SHA=`git submodule status | grep llvm | awk '{print $1}'` ."
+                    ]
+                },
+                {
+                    "identification": "build_prepare",
+                    "image": "modelzoo-t",
+                    "timeout": 3600,
+                    "command": [
+                        "sed -i 's/\"IREE_EXTERNAL_HAL_DRIVERS\": \"ocl\",/\"IREE_EXTERNAL_HAL_DRIVERS\": \"\",/g; s/\"IREE_TARGET_BACKEND_OCL\": true/\"IREE_TARGET_BACKEND_OCL\": false/g' CMakePresets.json",
+                        "cat CMakePresets.json |grep  IREE_EXTERNAL_HAL",
+                        "cat CMakePresets.json |grep  IREE_TARGET_BACKEND_OCL"
+                    ]
+                }
+            ],
+            [
+                {
+                    "identification": "compile",
+                    "timeout": 600,
+                    "image": "iree_riscv",
+                    "bin_path": "../iree-build-base/install/bin/iree-compile",
+                    "input_case_dir": "/home/roger.luo/workspace/code/testfm/iree-internal/../case/000001_conv__conv_Conv",
+                    "input_file": "000001_conv__conv_Conv.mlir",
+                    "output_case_dir": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv",
+                    "set_compile_option": [
+                        "--iree-hal-target-backends=vmvx"
+                    ]
+                },
+                {
+                    "identification": "inference",
+                    "timeout": 600,
+                    "image": "iree_riscv",
+                    "qemu_bin_path": "/usr/src/qemu-riscv/qemu-riscv64",
+                    "set_qemu_option": [
+                        "-cpu",
+                        "rv64",
+                        "-L",
+                        "/usr/src/toolchain_iree/sysroot/"
+                    ],
+                    "iree_bin_path": "../iree-build-riscv/tools/iree-run-module",
+                    "set_iree_option": [
+                        "--device=local-task",
+                        "--module=/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.mlir.vmfb",
+                        "--input=@/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+                        "--output=@/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_result.npy"
+                    ],
+                    "output_file": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_result.npy"
+                },
+                {
+                    "identification": "benchmark",
+                    "timeout": 600,
+                    "qemu_bin_path": "/usr/src/qemu-riscv/qemu-riscv64",
+                    "set_qemu_option": [
+                        "-cpu",
+                        "rv64",
+                        "-L",
+                        "/usr/src/toolchain_iree/sysroot/"
+                    ],
+                    "iree_bin_path": "../iree-build-riscv/tools/iree-benchmark-module",
+                    "set_iree_option": [
+                        "--device=local-task",
+                        "--module=/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.mlir.vmfb",
+                        "--function=abs",
+                        "--input=@/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+                        "--output=@/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_result.npy"
+                    ],
+                    "output_file": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_result.npy"
+                },
+                {
+                    "identification": "compare",
+                    "timeout": 600,
+                    "src_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_src_inference_output.npy",
+                    "iree_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_result.npy",
+                    "src_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+                    "iree_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy"
+                },
+                {
+                    "identification": "hw_format",
+                    "timeout": 600,
+                    "hw_format_src_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+                    "hw_format_src_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_src_inference_output.npy",
+                    "hw_format_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_input.txt",
+                    "hw_format_input_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_input_debug.txt",
+                    "hw_format_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_output.txt",
+                    "hw_format_output_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_output_debug.txt",
+                    "hw_format_compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_input.txt",
+                    "hw_format_compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_bias.txt",
+                    "hw_format_compiler_relu_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_relu_zp.txt",
+                    "hw_format_compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_weight.txt",
+                    "hw_format_compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_output.txt",
+                    "workdir": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv",
+                    "compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/i_0_input.npy",
+                    "compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/o_0_output.npy",
+                    "compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qweight.npy",
+                    "compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+                    "compiler_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+                    "compiler_scale0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+                    "compiler_scale1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+                    "compiler_shift": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy",
+                    "compiler_clip0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmin.npy",
+                    "compiler_clip1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmax.npy",
+                    "compiler_param": [
+                        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+                        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+                        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+                        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+                        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy"
+                    ],
+                    "hw_format_compiler_param": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_param.txt",
+                    "hw_format_compiler_discript": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_discript.txt"
+                }
+            ],
+            [
+                {
+                    "identification": "build_gencase",
+                    "timeout": 600,
+                    "input_dir": "../model",
+                    "output_dir": "../case",
+                    "convert": "convert",
+                    "sort": "size",
+                    "iree_python_compile": true,
+                    "convert_mlir2mlir": {
+                        "mlir_build_dir": "../iree-byollvm-install"
+                    },
+                    "convert_torch": {
+                        "input_file_type": "image",
+                        "torch": [
+                            "all"
+                        ],
+                        "build": true
+                    }
+                }
+            ]
+        ],
+        "parent_config": "config.yaml"
+    },
+    "flow_name": "hw_format",
+    "cur_config": {
+        "identification": "hw_format",
+        "timeout": 600,
+        "hw_format_src_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+        "hw_format_src_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_src_inference_output.npy",
+        "hw_format_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_input.txt",
+        "hw_format_input_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_input_debug.txt",
+        "hw_format_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_output.txt",
+        "hw_format_output_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_output_debug.txt",
+        "hw_format_compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_input.txt",
+        "hw_format_compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_bias.txt",
+        "hw_format_compiler_relu_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_relu_zp.txt",
+        "hw_format_compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_weight.txt",
+        "hw_format_compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_output.txt",
+        "workdir": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv",
+        "compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/i_0_input.npy",
+        "compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/o_0_output.npy",
+        "compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qweight.npy",
+        "compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+        "compiler_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+        "compiler_scale0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+        "compiler_scale1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+        "compiler_shift": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy",
+        "compiler_clip0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmin.npy",
+        "compiler_clip1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmax.npy",
+        "compiler_param": [
+            "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+            "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+            "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+            "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+            "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy"
+        ],
+        "hw_format_compiler_param": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_param.txt",
+        "hw_format_compiler_discript": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_discript.txt"
+    },
+    "exit_code": "0",
+    "err_str": "",
+    "json_file": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/HwFormat_hw_format.json",
+    "fail_str": "processed",
+    "conda_str": [],
+    "conda_env": "",
+    "timeout": 600,
+    "hw_format_src_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv.npy",
+    "hw_format_src_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/000001_conv__conv_Conv_src_inference_output.npy",
+    "hw_format_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_input.txt",
+    "hw_format_input_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_input_debug.txt",
+    "hw_format_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_data_output.txt",
+    "hw_format_output_debug": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_output_debug.txt",
+    "hw_format_compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_input.txt",
+    "hw_format_compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_bias.txt",
+    "hw_format_compiler_relu_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_relu_zp.txt",
+    "hw_format_compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_weight.txt",
+    "hw_format_compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_output.txt",
+    "workdir": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv",
+    "compiler_input": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/i_0_input.npy",
+    "compiler_output": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/o_0_output.npy",
+    "compiler_weight": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qweight.npy",
+    "compiler_bias": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+    "compiler_zp": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+    "compiler_scale0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+    "compiler_scale1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+    "compiler_shift": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy",
+    "compiler_clip0": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmin.npy",
+    "compiler_clip1": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qmax.npy",
+    "compiler_param": [
+        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/qbias.npy",
+        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/zo.npy",
+        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_scale.npy",
+        "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/out_shift.npy"
+    ],
+    "hw_format_compiler_param": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_param.txt",
+    "hw_format_compiler_discript": "/home/roger.luo/workspace/code/testfm/iree-internal/../result/graph_compiler/20240424033548/000001_conv__conv_Conv/hw_format_compiler_discript.txt",
+    "format_status": "Not format",
+    "compare_status": "PASS"
+}
