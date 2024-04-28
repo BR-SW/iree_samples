@@ -1,0 +1,130 @@
+{
+    "000SHIFT_OC0": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC1": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC2": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC3": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC4": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC5": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC6": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC7": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC8": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC9": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC10": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC11": {
+        "HEX": "0F",
+        "DEC": "15"
+    },
+    "000SHIFT_OC12": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC13": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC14": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC15": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC16": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC17": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC18": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC19": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC20": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC21": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC22": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC23": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC24": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC25": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC26": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC27": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC28": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC29": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC30": {
+        "HEX": "00",
+        "DEC": "0"
+    },
+    "000SHIFT_OC31": {
+        "HEX": "00",
+        "DEC": "0"
+    }
+}
